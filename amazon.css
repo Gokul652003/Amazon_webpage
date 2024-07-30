@@ -872,6 +872,9 @@
 
 
 }
+.starss img{
+    width: 24%;
+}
 @media screen and (max-width: 2560px) {
     .card {
         display: grid;

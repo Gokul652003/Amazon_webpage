@@ -5,7 +5,11 @@ const data = [{
     "mrp": "24,499",
     "offer": "51",
     "getit": "Friday 2 August",
-    "outoffstock":false
+    "outoffstock": false,
+    "itemcondition": "new",
+    "star": 4,
+    "delivery": "payondelivery",
+    "primemember": 1
 
 },
 {
@@ -14,7 +18,11 @@ const data = [{
     "amount": "19,999",
     "mrp": "24,999",
     "offer": "18",
-    "getit": "Friday 2 August"
+    "getit": "Friday 2 August",
+    "itemcondition": "new",
+    "star": 1,
+    "delivery": "payondeliver",
+    "primemember": 1
 
 },
 {
@@ -23,7 +31,9 @@ const data = [{
     "amount": "19,999",
     "mrp": "24,999",
     "offer": "18",
-    "getit": "Friday 2 August"
+    "getit": "Friday 2 August",
+    "itemcondition": "new",
+    "star": 1
 
 },
 {
@@ -32,7 +42,9 @@ const data = [{
     "amount": "89,990",
     "mrp": "1,49,999",
     "offer": "40",
-    "getit": "Tomorrow, 29 July"
+    "getit": "Tomorrow, 29 July",
+    "itemcondition": "new",
+    "star": 1
 
 },
 {
@@ -41,7 +53,9 @@ const data = [{
     "amount": "14,480",
     "mrp": "24,499",
     "offer": "39",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 1
 
 },
 {
@@ -50,7 +64,9 @@ const data = [{
     "amount": "14,880",
     "mrp": "24,499",
     "offer": "39",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 1
 
 },
 {
@@ -59,7 +75,9 @@ const data = [{
     "amount": "21,499",
     "mrp": "25,999",
     "offer": "17",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 2
 
 },
 {
@@ -68,7 +86,9 @@ const data = [{
     "amount": "8,799",
     "mrp": "13,999",
     "offer": "37",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 3
 
 },
 {
@@ -77,7 +97,9 @@ const data = [{
     "amount": "89,999",
     "mrp": "1,49,99",
     "offer": "40",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 3
 
 },
 {
@@ -86,7 +108,10 @@ const data = [{
     "amount": "21,499",
     "mrp": "1,49,99",
     "offer": "40",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "new",
+    "star": 4
+
 
 },
 {
@@ -95,7 +120,9 @@ const data = [{
     "amount": "21,499",
     "mrp": "29,999",
     "offer": "40",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "renewed",
+    "star": 4
 
 },
 {
@@ -104,7 +131,10 @@ const data = [{
     "amount": "21,499",
     "mrp": "25,499",
     "offer": "40",
-    "getit": "Friday 26 July"
+    "getit": "Friday 26 July",
+    "itemcondition": "renewed",
+    "star": 4
+
 
 }
 ]
@@ -112,8 +142,8 @@ const data = [{
 
 
 
+console.log(data[0].primemember == 1)
 firstadd(data)
-
 function firstadd(data) {
     let a = document.getElementsByClassName("mainright")
 
@@ -136,6 +166,12 @@ function firstadd(data) {
         phonediscrip.setAttribute("class", "phonediscrip")
         phonediscrip.innerHTML = data[i].phonediscrip
         threecard.appendChild(phonediscrip)
+        var star = document.createElement("div")
+        star.setAttribute("class", "starss")
+        var starimg = document.createElement("img")
+        starimg.setAttribute("src", `img/${data[i].star}star.png`)
+        star.appendChild(starimg)
+        threecard.appendChild(star)
 
         let past = document.createElement("p")
         past.setAttribute("class", "pastmonth")
@@ -169,19 +205,28 @@ function firstadd(data) {
         extra.setAttribute("class", "extra")
         extra.innerHTML = "Save extra with No Cost EMI"
         threecard.appendChild(extra)
-        let pri = document.createElement("div")
-        pri.setAttribute("class", "pri")
-        let primeee = document.createElement("div")
-        primeee.setAttribute("class", "primeee")
-        let primeimg = document.createElement("img")
-        primeimg.setAttribute("src", "img/pri.png")
-        primeee.appendChild(primeimg)
-        let dat = document.createElement("p")
-        dat.innerHTML = `Get it by <span class="dar">${data[0].getit}</span>`
+
+        if (data[i].primemember == 1) {
 
 
-        pri.appendChild(primeee)
-        pri.appendChild(dat)
+
+
+            let pri = document.createElement("div")
+            pri.setAttribute("class", "pri")
+            let primeee = document.createElement("div")
+            primeee.setAttribute("class", "primeee")
+            let primeimg = document.createElement("img")
+            primeimg.setAttribute("src", "img/pri.png")
+            primeee.appendChild(primeimg)
+            let dat = document.createElement("p")
+
+            dat.innerHTML = `Get it by <span class="dar">${data[i].getit}</span>`
+
+
+            pri.appendChild(primeee)
+            pri.appendChild(dat)
+            threecard.appendChild(pri)
+        }
 
         let free = document.createElement("p")
         free.setAttribute("class", "free")
@@ -191,7 +236,7 @@ function firstadd(data) {
         service.setAttribute("class", "service")
         service.innerHTML = "Service: Installation"
 
-        threecard.appendChild(pri)
+
         threecard.appendChild(free)
         threecard.appendChild(service)
         card.appendChild(threecard)
@@ -199,6 +244,8 @@ function firstadd(data) {
     a[0].appendChild(card);
 }
 let count = 0;
+let startdate = new Date("2015-08-04")
+let startdate1 = new Date("2015-09-04")
 let five = document.getElementsByClassName("five")
 five[0].onclick = function () {
     price(0)
@@ -230,6 +277,30 @@ fifty[0].onclick = function () {
 let sixty = document.getElementsByClassName("sixty")
 sixty[0].onclick = function () {
     price(7)
+}
+let newed = document.getElementsByClassName("new1")
+newed[0].onclick = function () {
+    price(8)
+}
+let renewed = document.getElementsByClassName("renewed")
+renewed[0].onclick = function () {
+    price(9)
+}
+let fourstar = document.getElementsByClassName("fourstar")
+fourstar[0].onclick = function () {
+    price(10)
+}
+let threestar = document.getElementsByClassName("threestar")
+threestar[0].onclick = function () {
+    price(11)
+}
+let twostar = document.getElementsByClassName("twostar")
+twostar[0].onclick = function () {
+    price(12)
+}
+let onestar = document.getElementsByClassName("onestar")
+onestar[0].onclick = function () {
+    price(13)
 }
 
 
@@ -275,6 +346,44 @@ function price(a) {
         }
         else if (a == 7) {
             var result = data.filter(obj => re(obj.offer) >= 60);
+            removeadd(result, a)
+        }
+        else if (a == 8) {
+            var result = data.filter(obj => obj.itemcondition == "new");
+            removeadd(result, a)
+        }
+        else if (a == 9) {
+            var result = data.filter(obj => obj.itemcondition == "renewed");
+            removeadd(result, a)
+        }
+        else if (a == 10) {
+            if (pc%2== 0 && co%2 == 0) {
+                var result = data.filter(obj => obj.star >= 4);
+                removeadd(result, a)
+            }
+            else if(co%2== 1 && pc%2 == 0){
+                var result = data.filter(obj => obj.star >= 4 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
+            else if(pc%2== 1 && co%2 == 0){
+                var result = data.filter(obj => obj.star >= 4 && obj.primemember == 1);
+                removeadd(result, a)
+            }
+            else{
+                var result = data.filter(obj => obj.star >= 4 && obj.primemember == 1 && obj.delivery == "payondelivery");
+
+            }
+        }
+        else if (a == 11) {
+            var result = data.filter(obj => obj.star >= 3);
+            removeadd(result, a)
+        }
+        else if (a == 12) {
+            var result = data.filter(obj => obj.star >= 2);
+            removeadd(result, a)
+        }
+        else if (a == 13) {
+            var result = data.filter(obj => obj.star >= 1);
             removeadd(result, a)
         }
 
@@ -350,34 +459,133 @@ function removeadd(y, x) {
     }
     else if (x == 3) {
         let k = document.getElementsByClassName("dis")
-        none(x,k)
+        none(x, k)
         pecentaddclear(x, k)
 
     }
     else if (x == 4) {
         let k = document.getElementsByClassName("dis")
-        none(x,k)
+        none(x, k)
         pecentaddclear(x, k)
 
     }
     else if (x == 5) {
         let k = document.getElementsByClassName("dis")
-        none(x,k)
+        none(x, k)
         pecentaddclear(x, k)
 
     }
     else if (x == 6) {
         let k = document.getElementsByClassName("dis")
-        none(x,k)
+        none(x, k)
         pecentaddclear(x, k)
 
     }
     else if (x == 7) {
         let k = document.getElementsByClassName("dis")
-        none(x,k)
+        none(x, k)
         pecentaddclear(x, k)
 
     }
+    else if (x == 8) {
+        let k = document.getElementsByClassName("itemcondition")
+        k[0].children[2].style.display = "none"
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 9) {
+        let k = document.getElementsByClassName("itemcondition")
+        k[0].children[1].style.display = "none"
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 10) {
+        let k = document.getElementsByClassName("f3")
+        let kk = document.getElementsByClassName("f2")
+        let kkk = document.getElementsByClassName("f1")
+        let kkkk = document.getElementsByClassName("average")
+
+
+        k[0].style.display = "none"
+        kk[0].style.display = "none"
+        kkk[0].style.display = "none"
+        // k[0].children[3].style.display="none",
+        // k[0].children[4].style.display="none"
+
+        starclearadd(k, kk, kkk, kkkk)
+
+    }
+    else if (x == 11) {
+        let k = document.getElementsByClassName("f4")
+        let kk = document.getElementsByClassName("f2")
+        let kkk = document.getElementsByClassName("f1")
+        let kkkk = document.getElementsByClassName("average")
+
+
+        k[0].style.display = "none"
+        kk[0].style.display = "none"
+        kkk[0].style.display = "none"
+        // k[0].children[3].style.display="none",
+        // k[0].children[4].style.display="none"
+
+        starclearadd(k, kk, kkk, kkkk, x)
+
+    }
+    else if (x == 12) {
+        let k = document.getElementsByClassName("f4")
+        let kk = document.getElementsByClassName("f3")
+        let kkk = document.getElementsByClassName("f1")
+        let kkkk = document.getElementsByClassName("average")
+
+
+        k[0].style.display = "none"
+        kk[0].style.display = "none"
+        kkk[0].style.display = "none"
+        // k[0].children[3].style.display="none",
+        // k[0].children[4].style.display="none"
+
+        starclearadd(k, kk, kkk, kkkk, x)
+
+    }
+    else if (x == 13) {
+        let k = document.getElementsByClassName("f4")
+        let kk = document.getElementsByClassName("f3")
+        let kkk = document.getElementsByClassName("f2")
+        let kkkk = document.getElementsByClassName("average")
+
+
+        k[0].style.display = "none"
+        kk[0].style.display = "none"
+        kkk[0].style.display = "none"
+        // k[0].children[3].style.display="none",
+        // k[0].children[4].style.display="none"
+
+        starclearadd(k, kk, kkk, kkkk, x)
+
+    }
+
+}
+function starclearadd(k, kk, kkk, kkkk) {
+    let w = document.createElement("p")
+    w.setAttribute("class", "last1")
+    w.setAttribute("id", "clear")
+    w.innerHTML = "Clear"
+    kkkk[0].appendChild(w)
+    w.onclick = function () {
+        starclear(k, kk, kkk, w)
+    }
+
+}
+function starclear(k, kk, kkk, w) {
+    k[0].style.display = "flex"
+    kk[0].style.display = "flex"
+    kkk[0].style.display = "flex"
+
+    w.remove()
+    removeadd(data, 20)
+    count = 0
+
+
 
 }
 function pecentaddclear(x, k) {
@@ -433,6 +641,23 @@ function clearpercent(x, k, w) {
 
 
     }
+    else if (x == 8) {
+        k[0].children[2].style.display = "block"
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+    else if (x == 9) {
+        k[0].children[1].style.display = "block"
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+
 
 }
 function block(x, k) {
@@ -444,7 +669,7 @@ function block(x, k) {
 
     }
 
-} 
+}
 function none(x, k) {
     for (i = 1; i <= 5; i++) {
         if (i == x - 2) {
@@ -454,4 +679,74 @@ function none(x, k) {
 
     }
 
+}
+
+
+let co = 0
+let pc = 0
+var payondelivery = document.getElementsByClassName("payondelivery")
+payondelivery[0].onclick = function () {
+    countincrement()
+}
+var primecheck = document.getElementsByClassName("primecheck")
+primecheck[0].onclick = function () {
+    primeincrement()
+}
+
+
+function countincrement() {
+    co++
+    if (co % 2 != 0) {
+        if (pc == 0) {
+            var result = data.filter(obj => obj.delivery == "payondelivery");
+            removeadds(result)
+        }
+        else {
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
+            removeadds(result)
+
+
+        }
+
+    }
+    else {
+        if (pc == 0) {
+            removeadds(data)
+
+        }
+        else {
+            var result = data.filter(obj => obj.primemember == 1);
+            removeadds(result)
+
+        }
+
+    }
+
+}
+function primeincrement() {
+    pc++
+    if (pc % 2 != 0) {
+        if (co % 2 == 0) {
+            var result = data.filter(obj => obj.primemember == 1);
+            removeadds(result)
+        }
+        else {
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
+            removeadds(result)
+
+        }
+
+    }
+    else {
+        removeadds(data)
+    }
+
+}
+
+
+
+function removeadds(y) {
+    let d = document.getElementsByClassName("card")
+    d[0].remove()
+    firstadd(y)
 }
