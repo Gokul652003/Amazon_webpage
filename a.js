@@ -1,4 +1,4 @@
-var data = [{
+const data = [{
     "phoneimage": "img/phone7.jpg",
     "phonediscrip": "Samsung Galaxy M35 5G (DayBreak Blue,6GB RAM,128GB Storage)| Corning Gorilla Glass Victus+| AnTuTu Score 595K+ | Vapour Cooling Chamber |",
     "amount": "19,999",
@@ -107,88 +107,194 @@ var data = [{
 
 }
 ]
-var a = document.getElementsByClassName("mainright")
-
-var card = document.createElement("div")
-card.setAttribute("class", "card")
-for (let i = 0; i < data.length; i++) {
-
-    var threecard = document.createElement("div")
-    threecard.setAttribute("class", "threecard")
-
-    var phonephoto = document.createElement("div")
-    phonephoto.setAttribute("class", "phonephoto")
-
-    var phoneimg = document.createElement("img")
-    phoneimg.setAttribute("src", data[i].phoneimage)
-    phonephoto.appendChild(phoneimg)
-    threecard.appendChild(phonephoto)
-
-    var phonediscrip = document.createElement("p")
-    phonediscrip.setAttribute("class", "phonediscrip")
-    phonediscrip.innerHTML = data[i].phonediscrip
-    threecard.appendChild(phonediscrip)
-
-    var past = document.createElement("p")
-    past.setAttribute("class", "pastmonth")
-    past.innerHTML = "5K+ bought in past month"
-    threecard.appendChild(past)
-
-    var pricemrp = document.createElement("div")
-    pricemrp.setAttribute("class", "pricemrp")
-
-    var rats = document.createElement("span")
-    rats.setAttribute("class", "rats")
-    rats.innerHTML = "₹"
-    pricemrp.appendChild(rats)
-    var amoun = document.createElement("p")
-    amoun.setAttribute("class", "amount")
-    amoun.innerHTML = data[i].amount
-    pricemrp.appendChild(amoun)
-    var rate = document.createElement("p")
-    rate.setAttribute("class", "rate")
-    rate.innerHTML = `M.R.P: <span class="strike">₹${data[0].mrp}</span>`
-    pricemrp.appendChild(rate)
-    var percent = document.createElement("p")
-    percent.setAttribute("class", "percent")
-    percent.innerHTML = `(${data[i].offer}% off)`
-    pricemrp.appendChild(percent)
 
 
-    threecard.appendChild(pricemrp)
-
-    var extra = document.createElement("p")
-    extra.setAttribute("class", "extra")
-    extra.innerHTML = "Save extra with No Cost EMI"
-    threecard.appendChild(extra)
-    var pri = document.createElement("div")
-    pri.setAttribute("class", "pri")
-    var primeee = document.createElement("div")
-    primeee.setAttribute("class", "primeee")
-    var primeimg = document.createElement("img")
-    primeimg.setAttribute("src", "img/pri.png")
-    primeee.appendChild(primeimg)
-    var dat = document.createElement("p")
-    dat.innerHTML = `Get it by <span class="dar">${data[0].getit}</span>`
 
 
-    pri.appendChild(primeee)
-    pri.appendChild(dat)
+firstadd(data)
 
-    var free = document.createElement("p")
-    free.setAttribute("class", "free")
-    free.innerHTML = "Free Delivery on Amazon"
+function firstadd(data) {
+    let a = document.getElementsByClassName("mainright")
 
-    var service = document.createElement("p")
-    service.setAttribute("class", "service")
-    service.innerHTML = "Service: Installation"
+    let card = document.createElement("div")
+    card.setAttribute("class", "card")
+    for (let i = 0; i < data.length; i++) {
 
-    threecard.appendChild(pri)
-    threecard.appendChild(free)
-    threecard.appendChild(service)
-    card.appendChild(threecard)
+        let threecard = document.createElement("div")
+        threecard.setAttribute("class", "threecard")
+
+        let phonephoto = document.createElement("div")
+        phonephoto.setAttribute("class", "phonephoto")
+
+        let phoneimg = document.createElement("img")
+        phoneimg.setAttribute("src", data[i].phoneimage)
+        phonephoto.appendChild(phoneimg)
+        threecard.appendChild(phonephoto)
+
+        let phonediscrip = document.createElement("p")
+        phonediscrip.setAttribute("class", "phonediscrip")
+        phonediscrip.innerHTML = data[i].phonediscrip
+        threecard.appendChild(phonediscrip)
+
+        let past = document.createElement("p")
+        past.setAttribute("class", "pastmonth")
+        past.innerHTML = "5K+ bought in past month"
+        threecard.appendChild(past)
+
+        let pricemrp = document.createElement("div")
+        pricemrp.setAttribute("class", "pricemrp")
+
+        let rats = document.createElement("span")
+        rats.setAttribute("class", "rats")
+        rats.innerHTML = "₹"
+        pricemrp.appendChild(rats)
+        let amoun = document.createElement("p")
+        amoun.setAttribute("class", "amount")
+        amoun.innerHTML = data[i].amount
+        pricemrp.appendChild(amoun)
+        let rate = document.createElement("p")
+        rate.setAttribute("class", "rate")
+        rate.innerHTML = `M.R.P: <span class="strike">₹${data[0].mrp}</span>`
+        pricemrp.appendChild(rate)
+        let percent = document.createElement("p")
+        percent.setAttribute("class", "percent")
+        percent.innerHTML = `(${data[i].offer}% off)`
+        pricemrp.appendChild(percent)
+
+
+        threecard.appendChild(pricemrp)
+
+        let extra = document.createElement("p")
+        extra.setAttribute("class", "extra")
+        extra.innerHTML = "Save extra with No Cost EMI"
+        threecard.appendChild(extra)
+        let pri = document.createElement("div")
+        pri.setAttribute("class", "pri")
+        let primeee = document.createElement("div")
+        primeee.setAttribute("class", "primeee")
+        let primeimg = document.createElement("img")
+        primeimg.setAttribute("src", "img/pri.png")
+        primeee.appendChild(primeimg)
+        let dat = document.createElement("p")
+        dat.innerHTML = `Get it by <span class="dar">${data[0].getit}</span>`
+
+
+        pri.appendChild(primeee)
+        pri.appendChild(dat)
+
+        let free = document.createElement("p")
+        free.setAttribute("class", "free")
+        free.innerHTML = "Free Delivery on Amazon"
+
+        let service = document.createElement("p")
+        service.setAttribute("class", "service")
+        service.innerHTML = "Service: Installation"
+
+        threecard.appendChild(pri)
+        threecard.appendChild(free)
+        threecard.appendChild(service)
+        card.appendChild(threecard)
+    }
+    a[0].appendChild(card);
+}
+
+let five = document.getElementsByClassName("five")
+five[0].onclick = function () {
+    price(0)
+}
+let ten = document.getElementsByClassName("ten")
+ten[0].onclick = function () {
+    price(1)
+}
+let tewnty = document.getElementsByClassName("tewnty")
+tewnty[0].onclick = function () {
+    price(2)
 }
 
 
 
-a[0].appendChild(card)
+function price(a) {
+ 
+    if (a == 0) {
+        var result = data.filter(obj => re(obj.amount) < 10000);
+        var result = data.filter(obj => re(obj.amount) > 5000 && re(obj.amount) < 10000);
+        
+    
+        removeadd(result,a)
+
+    }
+    else if (a == 1) {
+        var result = data.filter(obj => re(obj.amount) > 10000 && re(obj.amount) < 20000);
+        removeadd(result,a)
+
+    }
+    else{
+        var result = data.filter(obj => re(obj.amount) > 20000);
+        removeadd(result,a)
+
+    }
+}
+function re(x) {
+    let str1 = x.replace(/,/g, "");
+
+    str1 = parseInt(str1)
+    return str1
+}
+function clear(x,y,w){
+    x[0].style.display="block"
+    y[0].style.display="block"
+    w.remove()
+    removeadd(data,20)
+    
+
+}
+
+function clearadd(x,y){
+    let q=document.getElementsByClassName("price")
+    let w=document.createElement("p")
+    w.setAttribute("class","last1")
+    w.setAttribute("id","clear")
+    w.innerHTML="Clear"
+    q[0].appendChild(w)
+    w.onclick=function(){
+        clear(x,y,w)
+    }
+  
+}
+
+
+function removeadd(y,x) {
+    let d = document.getElementsByClassName("card")
+    d[0].remove()
+    firstadd(y)
+    if(x==0){
+        let m=document.getElementsByClassName("ten")
+        m[0].style.display="none"
+        let e=document.getElementsByClassName("tewnty")
+        e[0].style.display="none"
+        clearadd(m,e)
+        
+
+    }
+    else if(x==1){
+        let m=document.getElementsByClassName("five")
+        m[0].style.display="none"
+        let e=document.getElementsByClassName("tewnty")
+        e[0].style.display="none"
+        clearadd(m,e)
+        
+
+    }
+    else if(x==20){
+        console.log("hi")
+    }
+    else{
+        let m=document.getElementsByClassName("five")
+        m[0].style.display="none"
+        let e=document.getElementsByClassName("ten")
+        e[0].style.display="none"
+        clearadd(m,e)
+
+    }
+
+}
