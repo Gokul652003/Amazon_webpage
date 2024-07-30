@@ -197,7 +197,7 @@ function firstadd(data) {
     }
     a[0].appendChild(card);
 }
-
+let count = 0;
 let five = document.getElementsByClassName("five")
 five[0].onclick = function () {
     price(0)
@@ -214,25 +214,28 @@ tewnty[0].onclick = function () {
 
 
 function price(a) {
- 
-    if (a == 0) {
-        var result = data.filter(obj => re(obj.amount) < 10000);
-        var result = data.filter(obj => re(obj.amount) > 5000 && re(obj.amount) < 10000);
-        
-    
-        removeadd(result,a)
 
-    }
-    else if (a == 1) {
-        var result = data.filter(obj => re(obj.amount) > 10000 && re(obj.amount) < 20000);
-        removeadd(result,a)
+    if (count == 0) {
+        if (a == 0) {
+            var result = data.filter(obj => re(obj.amount) < 10000);
+            var result = data.filter(obj => re(obj.amount) > 5000 && re(obj.amount) < 10000);
 
-    }
-    else{
-        var result = data.filter(obj => re(obj.amount) > 20000);
-        removeadd(result,a)
 
+            removeadd(result, a)
+
+        }
+        else if (a == 1) {
+            var result = data.filter(obj => re(obj.amount) > 10000 && re(obj.amount) < 20000);
+            removeadd(result, a)
+
+        }
+        else {
+            var result = data.filter(obj => re(obj.amount) > 20000);
+            removeadd(result, a)
+
+        }
     }
+    count++
 }
 function re(x) {
     let str1 = x.replace(/,/g, "");
@@ -240,60 +243,61 @@ function re(x) {
     str1 = parseInt(str1)
     return str1
 }
-function clear(x,y,w){
-    x[0].style.display="block"
-    y[0].style.display="block"
+function clear(x, y, w) {
+    x[0].style.display = "block"
+    y[0].style.display = "block"
     w.remove()
-    removeadd(data,20)
-    
+    removeadd(data, 20)
+    count=0
+
 
 }
 
-function clearadd(x,y){
-    let q=document.getElementsByClassName("price")
-    let w=document.createElement("p")
-    w.setAttribute("class","last1")
-    w.setAttribute("id","clear")
-    w.innerHTML="Clear"
+function clearadd(x, y) {
+    let q = document.getElementsByClassName("price")
+    let w = document.createElement("p")
+    w.setAttribute("class", "last1")
+    w.setAttribute("id", "clear")
+    w.innerHTML = "Clear"
     q[0].appendChild(w)
-    w.onclick=function(){
-        clear(x,y,w)
+    w.onclick = function () {
+        clear(x, y, w)
     }
-  
+
 }
 
 
-function removeadd(y,x) {
+function removeadd(y, x) {
     let d = document.getElementsByClassName("card")
     d[0].remove()
     firstadd(y)
-    if(x==0){
-        let m=document.getElementsByClassName("ten")
-        m[0].style.display="none"
-        let e=document.getElementsByClassName("tewnty")
-        e[0].style.display="none"
-        clearadd(m,e)
-        
+    if (x == 0) {
+        let m = document.getElementsByClassName("ten")
+        m[0].style.display = "none"
+        let e = document.getElementsByClassName("tewnty")
+        e[0].style.display = "none"
+        clearadd(m, e)
+
 
     }
-    else if(x==1){
-        let m=document.getElementsByClassName("five")
-        m[0].style.display="none"
-        let e=document.getElementsByClassName("tewnty")
-        e[0].style.display="none"
-        clearadd(m,e)
-        
+    else if (x == 1) {
+        let m = document.getElementsByClassName("five")
+        m[0].style.display = "none"
+        let e = document.getElementsByClassName("tewnty")
+        e[0].style.display = "none"
+        clearadd(m, e)
+
 
     }
-    else if(x==20){
+    else if (x == 20) {
         console.log("hi")
     }
-    else{
-        let m=document.getElementsByClassName("five")
-        m[0].style.display="none"
-        let e=document.getElementsByClassName("ten")
-        e[0].style.display="none"
-        clearadd(m,e)
+    else {
+        let m = document.getElementsByClassName("five")
+        m[0].style.display = "none"
+        let e = document.getElementsByClassName("ten")
+        e[0].style.display = "none"
+        clearadd(m, e)
 
     }
 
