@@ -3,8 +3,9 @@ const data = [{
     "phonediscrip": "Samsung Galaxy M35 5G (DayBreak Blue,6GB RAM,128GB Storage)| Corning Gorilla Glass Victus+| AnTuTu Score 595K+ | Vapour Cooling Chamber |",
     "amount": "19,999",
     "mrp": "24,499",
-    "offer": "18",
-    "getit": "Friday 2 August"
+    "offer": "51",
+    "getit": "Friday 2 August",
+    "outoffstock":false
 
 },
 {
@@ -210,6 +211,28 @@ let tewnty = document.getElementsByClassName("tewnty")
 tewnty[0].onclick = function () {
     price(2)
 }
+let tenper = document.getElementsByClassName("tenper")
+tenper[0].onclick = function () {
+    price(3)
+}
+let twentyper = document.getElementsByClassName("twentyper")
+twentyper[0].onclick = function () {
+    price(4)
+}
+let thirtyfive = document.getElementsByClassName("thirtyfive")
+thirtyfive[0].onclick = function () {
+    price(5)
+}
+let fifty = document.getElementsByClassName("fifty")
+fifty[0].onclick = function () {
+    price(6)
+}
+let sixty = document.getElementsByClassName("sixty")
+sixty[0].onclick = function () {
+    price(7)
+}
+
+
 
 
 
@@ -229,11 +252,33 @@ function price(a) {
             removeadd(result, a)
 
         }
-        else {
+        else if (a == 2) {
             var result = data.filter(obj => re(obj.amount) > 20000);
             removeadd(result, a)
 
         }
+        else if (a == 3) {
+            var result = data.filter(obj => re(obj.offer) >= 10);
+            removeadd(result, a)
+        }
+        else if (a == 4) {
+            var result = data.filter(obj => re(obj.offer) >= 25);
+            removeadd(result, a)
+        }
+        else if (a == 5) {
+            var result = data.filter(obj => re(obj.offer) >= 35);
+            removeadd(result, a)
+        }
+        else if (a == 6) {
+            var result = data.filter(obj => re(obj.offer) >= 50);
+            removeadd(result, a)
+        }
+        else if (a == 7) {
+            var result = data.filter(obj => re(obj.offer) >= 60);
+            removeadd(result, a)
+        }
+
+
     }
     count++
 }
@@ -248,7 +293,7 @@ function clear(x, y, w) {
     y[0].style.display = "block"
     w.remove()
     removeadd(data, 20)
-    count=0
+    count = 0
 
 
 }
@@ -264,7 +309,10 @@ function clearadd(x, y) {
         clear(x, y, w)
     }
 
+
 }
+
+
 
 
 function removeadd(y, x) {
@@ -292,12 +340,117 @@ function removeadd(y, x) {
     else if (x == 20) {
         console.log("hi")
     }
-    else {
+    else if (x == 2) {
         let m = document.getElementsByClassName("five")
         m[0].style.display = "none"
         let e = document.getElementsByClassName("ten")
         e[0].style.display = "none"
         clearadd(m, e)
+
+    }
+    else if (x == 3) {
+        let k = document.getElementsByClassName("dis")
+        none(x,k)
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 4) {
+        let k = document.getElementsByClassName("dis")
+        none(x,k)
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 5) {
+        let k = document.getElementsByClassName("dis")
+        none(x,k)
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 6) {
+        let k = document.getElementsByClassName("dis")
+        none(x,k)
+        pecentaddclear(x, k)
+
+    }
+    else if (x == 7) {
+        let k = document.getElementsByClassName("dis")
+        none(x,k)
+        pecentaddclear(x, k)
+
+    }
+
+}
+function pecentaddclear(x, k) {
+
+    let w = document.createElement("p")
+    w.setAttribute("class", "last1")
+    w.setAttribute("id", "clear")
+    w.innerHTML = "Clear"
+    k[0].appendChild(w)
+    w.onclick = function () {
+        clearpercent(x, k, w)
+    }
+
+}
+function clearpercent(x, k, w) {
+    if (x == 3) {
+        block(x, k)
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+    else if (x == 4) {
+        block(x, k)
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+    else if (x == 5) {
+        block(x, k)
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+    else if (x == 6) {
+        block(x, k)
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+    else if (x == 7) {
+        block(x, k)
+        w.remove()
+        removeadd(data, 20)
+        count = 0
+
+
+    }
+
+}
+function block(x, k) {
+    for (i = 1; i <= 5; i++) {
+        if (i == x - 2) {
+            continue
+        }
+        k[0].children[i].style.display = "block"
+
+    }
+
+} 
+function none(x, k) {
+    for (i = 1; i <= 5; i++) {
+        if (i == x - 2) {
+            continue
+        }
+        k[0].children[i].style.display = "none"
 
     }
 
