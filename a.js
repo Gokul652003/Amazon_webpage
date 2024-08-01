@@ -21,7 +21,7 @@ const data = [{
     "getit": "Friday 2 August",
     "itemcondition": "new",
     "star": 1,
-    "delivery": "payondeliver",
+    "delivery": "payondelivery",
     "primemember": 1
 
 },
@@ -33,7 +33,8 @@ const data = [{
     "offer": "18",
     "getit": "Friday 2 August",
     "itemcondition": "new",
-    "star": 1
+    "star": 1,
+    "delivery": "payondelivery",
 
 },
 {
@@ -142,7 +143,6 @@ const data = [{
 
 
 
-console.log(data[0].primemember == 1)
 firstadd(data)
 function firstadd(data) {
     let a = document.getElementsByClassName("mainright")
@@ -250,59 +250,72 @@ let five = document.getElementsByClassName("five")
 five[0].onclick = function () {
     price(0)
 }
+let fivethousand=0;
 let ten = document.getElementsByClassName("ten")
 ten[0].onclick = function () {
     price(1)
 }
+let tenthousand=0;
 let tewnty = document.getElementsByClassName("tewnty")
 tewnty[0].onclick = function () {
     price(2)
 }
+let twentythousand=0;
 let tenper = document.getElementsByClassName("tenper")
 tenper[0].onclick = function () {
     price(3)
 }
+let percent10=0;
 let twentyper = document.getElementsByClassName("twentyper")
 twentyper[0].onclick = function () {
     price(4)
 }
+let percent25=0;
 let thirtyfive = document.getElementsByClassName("thirtyfive")
 thirtyfive[0].onclick = function () {
     price(5)
 }
+let percent35=0;
 let fifty = document.getElementsByClassName("fifty")
 fifty[0].onclick = function () {
     price(6)
 }
+let percent50=0;
 let sixty = document.getElementsByClassName("sixty")
 sixty[0].onclick = function () {
     price(7)
 }
+let percent60=0;
 let newed = document.getElementsByClassName("new1")
 newed[0].onclick = function () {
     price(8)
 }
+let newphone=0;
 let renewed = document.getElementsByClassName("renewed")
 renewed[0].onclick = function () {
     price(9)
 }
+let renewedphone=0;
 let fourstar = document.getElementsByClassName("fourstar")
 fourstar[0].onclick = function () {
     price(10)
 }
+let fs=0;
 let threestar = document.getElementsByClassName("threestar")
 threestar[0].onclick = function () {
     price(11)
 }
+let ths=0;
 let twostar = document.getElementsByClassName("twostar")
 twostar[0].onclick = function () {
     price(12)
 }
+let tws=0;
 let onestar = document.getElementsByClassName("onestar")
 onestar[0].onclick = function () {
     price(13)
 }
-
+let os=0;
 
 
 
@@ -311,7 +324,8 @@ function price(a) {
 
     if (count == 0) {
         if (a == 0) {
-            var result = data.filter(obj => re(obj.amount) < 10000);
+            fivethousand++
+            
             var result = data.filter(obj => re(obj.amount) > 5000 && re(obj.amount) < 10000);
 
 
@@ -319,44 +333,54 @@ function price(a) {
 
         }
         else if (a == 1) {
+            tenthousand++
             var result = data.filter(obj => re(obj.amount) > 10000 && re(obj.amount) < 20000);
             removeadd(result, a)
 
         }
         else if (a == 2) {
+            twentythousand++
             var result = data.filter(obj => re(obj.amount) > 20000);
             removeadd(result, a)
 
         }
         else if (a == 3) {
+            percent10++
             var result = data.filter(obj => re(obj.offer) >= 10);
             removeadd(result, a)
         }
         else if (a == 4) {
+            percent25++
             var result = data.filter(obj => re(obj.offer) >= 25);
             removeadd(result, a)
         }
         else if (a == 5) {
+            percent35++
             var result = data.filter(obj => re(obj.offer) >= 35);
             removeadd(result, a)
         }
         else if (a == 6) {
+            percent50++
             var result = data.filter(obj => re(obj.offer) >= 50);
             removeadd(result, a)
         }
         else if (a == 7) {
+            percent60++
             var result = data.filter(obj => re(obj.offer) >= 60);
             removeadd(result, a)
         }
         else if (a == 8) {
+            newphone++
             var result = data.filter(obj => obj.itemcondition == "new");
             removeadd(result, a)
         }
         else if (a == 9) {
+            renewedphone++
             var result = data.filter(obj => obj.itemcondition == "renewed");
             removeadd(result, a)
         }
         else if (a == 10) {
+            fs++
             if (pc%2== 0 && co%2 == 0) {
                 var result = data.filter(obj => obj.star >= 4);
                 removeadd(result, a)
@@ -371,20 +395,65 @@ function price(a) {
             }
             else{
                 var result = data.filter(obj => obj.star >= 4 && obj.primemember == 1 && obj.delivery == "payondelivery");
-
+                removeadd(result, a)
             }
         }
         else if (a == 11) {
-            var result = data.filter(obj => obj.star >= 3);
-            removeadd(result, a)
+            ths++
+            if (pc%2== 0 && co%2 == 0) {
+                var result = data.filter(obj => obj.star >= 3);
+                removeadd(result, a)
+            }
+            else if(co%2== 1 && pc%2 == 0){
+                var result = data.filter(obj => obj.star >= 3 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
+            else if(pc%2== 1 && co%2 == 0){
+                var result = data.filter(obj => obj.star >= 3 && obj.primemember == 1);
+                removeadd(result, a)
+            }
+            else{
+                var result = data.filter(obj => obj.star >= 3 && obj.primemember == 1 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
         }
         else if (a == 12) {
-            var result = data.filter(obj => obj.star >= 2);
-            removeadd(result, a)
+            tws++
+            if (pc%2== 0 && co%2 == 0) {
+                var result = data.filter(obj => obj.star >= 2);
+                removeadd(result, a)
+            }
+            else if(co%2== 1 && pc%2 == 0){
+                var result = data.filter(obj => obj.star >= 2 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
+            else if(pc%2== 1 && co%2 == 0){
+                var result = data.filter(obj => obj.star >= 2 && obj.primemember == 1);
+                removeadd(result, a)
+            }
+            else{
+                var result = data.filter(obj => obj.star >= 2 && obj.primemember == 1 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
         }
         else if (a == 13) {
-            var result = data.filter(obj => obj.star >= 1);
-            removeadd(result, a)
+            os++
+            if (pc%2== 0 && co%2 == 0) {
+                var result = data.filter(obj => obj.star >= 1);
+                removeadd(result, a)
+            }
+            else if(co%2== 1 && pc%2 == 0){
+                var result = data.filter(obj => obj.star >= 1 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
+            else if(pc%2== 1 && co%2 == 0){
+                var result = data.filter(obj => obj.star >= 1 && obj.primemember == 1);
+                removeadd(result, a)
+            }
+            else{
+                var result = data.filter(obj => obj.star >= 1 && obj.primemember == 1 && obj.delivery == "payondelivery");
+                removeadd(result, a)
+            }
         }
 
 
@@ -407,7 +476,7 @@ function clear(x, y, w) {
 
 }
 
-function clearadd(x, y) {
+function clearadd(x, y,decre) {
     let q = document.getElementsByClassName("price")
     let w = document.createElement("p")
     w.setAttribute("class", "last1")
@@ -415,7 +484,7 @@ function clearadd(x, y) {
     w.innerHTML = "Clear"
     q[0].appendChild(w)
     w.onclick = function () {
-        clear(x, y, w)
+        clear(x, y, w,decre)
     }
 
 
@@ -424,7 +493,7 @@ function clearadd(x, y) {
 
 
 
-function removeadd(y, x) {
+function removeadd(y, x,decre) {
     let d = document.getElementsByClassName("card")
     d[0].remove()
     firstadd(y)
@@ -433,7 +502,7 @@ function removeadd(y, x) {
         m[0].style.display = "none"
         let e = document.getElementsByClassName("tewnty")
         e[0].style.display = "none"
-        clearadd(m, e)
+        clearadd(m, e,decre)
 
 
     }
@@ -442,7 +511,7 @@ function removeadd(y, x) {
         m[0].style.display = "none"
         let e = document.getElementsByClassName("tewnty")
         e[0].style.display = "none"
-        clearadd(m, e)
+        clearadd(m, e,decre)
 
 
     }
@@ -454,49 +523,49 @@ function removeadd(y, x) {
         m[0].style.display = "none"
         let e = document.getElementsByClassName("ten")
         e[0].style.display = "none"
-        clearadd(m, e)
+        clearadd(m, e,decre)
 
     }
     else if (x == 3) {
         let k = document.getElementsByClassName("dis")
         none(x, k)
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 4) {
         let k = document.getElementsByClassName("dis")
         none(x, k)
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 5) {
         let k = document.getElementsByClassName("dis")
         none(x, k)
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 6) {
         let k = document.getElementsByClassName("dis")
         none(x, k)
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 7) {
         let k = document.getElementsByClassName("dis")
         none(x, k)
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 8) {
         let k = document.getElementsByClassName("itemcondition")
         k[0].children[2].style.display = "none"
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 9) {
         let k = document.getElementsByClassName("itemcondition")
         k[0].children[1].style.display = "none"
-        pecentaddclear(x, k)
+        pecentaddclear(x, k,decre)
 
     }
     else if (x == 10) {
@@ -512,7 +581,7 @@ function removeadd(y, x) {
         // k[0].children[3].style.display="none",
         // k[0].children[4].style.display="none"
 
-        starclearadd(k, kk, kkk, kkkk)
+        starclearadd(k, kk, kkk, kkkk,fs)
 
     }
     else if (x == 11) {
@@ -528,7 +597,7 @@ function removeadd(y, x) {
         // k[0].children[3].style.display="none",
         // k[0].children[4].style.display="none"
 
-        starclearadd(k, kk, kkk, kkkk, x)
+        starclearadd(k, kk, kkk, kkkk,ths)
 
     }
     else if (x == 12) {
@@ -544,7 +613,7 @@ function removeadd(y, x) {
         // k[0].children[3].style.display="none",
         // k[0].children[4].style.display="none"
 
-        starclearadd(k, kk, kkk, kkkk, x)
+        starclearadd(k, kk, kkk, kkkk, tws)
 
     }
     else if (x == 13) {
@@ -560,35 +629,53 @@ function removeadd(y, x) {
         // k[0].children[3].style.display="none",
         // k[0].children[4].style.display="none"
 
-        starclearadd(k, kk, kkk, kkkk, x)
+        starclearadd(k, kk, kkk, kkkk, os)
 
     }
 
 }
-function starclearadd(k, kk, kkk, kkkk) {
+function starclearadd(k, kk, kkk, kkkk,decre) {
     let w = document.createElement("p")
     w.setAttribute("class", "last1")
     w.setAttribute("id", "clear")
     w.innerHTML = "Clear"
     kkkk[0].appendChild(w)
     w.onclick = function () {
-        starclear(k, kk, kkk, w)
+        starclear(k, kk, kkk, w,decre)
     }
 
 }
-function starclear(k, kk, kkk, w) {
+function starclear(k, kk, kkk, w,decre) {
     k[0].style.display = "flex"
     kk[0].style.display = "flex"
     kkk[0].style.display = "flex"
 
     w.remove()
+    if(co%2==0 && pc%2==0){
+        
     removeadd(data, 20)
+    }
+    else if(co%2==0 && pc%2!=0){
+        var result = data.filter(obj => obj.primemember == 1)
+        removeadd(result, 20)
+    }
+    else if(co%2!=0 && pc%2==0){
+        var result = data.filter(obj => obj.delivery == "payondelivery")
+        removeadd(result, 20)
+    }
+    else{
+        var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery")
+        removeadd(result,20)
+    }
+
+    
     count = 0
+    decre=0
 
-
+    
 
 }
-function pecentaddclear(x, k) {
+function pecentaddclear(x, k,decre) {
 
     let w = document.createElement("p")
     w.setAttribute("class", "last1")
@@ -596,16 +683,17 @@ function pecentaddclear(x, k) {
     w.innerHTML = "Clear"
     k[0].appendChild(w)
     w.onclick = function () {
-        clearpercent(x, k, w)
+        clearpercent(x, k, w,decre)
     }
 
 }
-function clearpercent(x, k, w) {
+function clearpercent(x, k, w,decre) {
     if (x == 3) {
         block(x, k)
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -614,6 +702,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -622,6 +711,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -630,6 +720,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -638,6 +729,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -646,6 +738,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -654,6 +747,7 @@ function clearpercent(x, k, w) {
         w.remove()
         removeadd(data, 20)
         count = 0
+        decre=0
 
 
     }
@@ -697,25 +791,68 @@ primecheck[0].onclick = function () {
 function countincrement() {
     co++
     if (co % 2 != 0) {
-        if (pc == 0) {
+        if (pc % 2 == 0 && fs==0 && ths==0) {
             var result = data.filter(obj => obj.delivery == "payondelivery");
             removeadds(result)
         }
-        else {
+        else if (pc % 2 == 1 && fs==0 && ths==0) {
             var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
             removeadds(result)
+        }
+        else if (pc % 2 == 0 && fs==1 && ths==0) {
+            var result = data.filter(obj => obj.delivery == "payondelivery" && obj.star >= 4);
+            removeadds(result)
+        }
+        else if  (pc % 2 == 1 && fs==1 && ths==0){
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery" && obj.star >= 4);
+            removeadds(result)
 
+        }
+        
+        else if (pc % 2 == 1 && fs==0 && ths==0) {
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
+            removeadds(result)
+        }
+        else if (pc % 2 == 0 && fs==0 && ths==1) {
+            var result = data.filter(obj => obj.delivery == "payondelivery" && obj.star >=3);
+            removeadds(result)
+        }
+        else if  (pc % 2 == 1 && fs==0 && ths==1){
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery" && obj.star >= 3);
+            removeadds(result)
 
         }
 
     }
     else {
-        if (pc == 0) {
+        if (pc % 2 == 0 && fs==0 && ths==0) {
+            
             removeadds(data)
+        }
+        else if (pc % 2 == 1 && fs==0 && ths==0) {
+            var result = data.filter(obj => obj.primemember == 1);
+            removeadds(result)
+        }
+        else if (pc % 2 == 0 && fs==1 && ths==0) {
+            var result = data.filter(obj => obj.star >= 4);
+            removeadds(result)
+        }
+        else if  (pc % 2 == 1 && fs==1 && ths==0){
+            var result = data.filter(obj => obj.primemember == 1 && obj.star >= 4);
+            removeadds(result)
 
         }
-        else {
+        
+        else if (pc % 2 == 1 && fs==0 && ths==0) {
             var result = data.filter(obj => obj.primemember == 1);
+            removeadds(result)
+        }
+        else if (pc % 2 == 0 && fs==0 && ths==1) {
+            var result = data.filter(obj =>obj.star >= 3);
+            removeadds(result)
+        }
+        else if  (pc % 2 == 1 && fs==0 && ths==1){
+            var result = data.filter(obj => obj.primemember == 1 &&  obj.star >= 3);
             removeadds(result)
 
         }
@@ -726,19 +863,78 @@ function countincrement() {
 function primeincrement() {
     pc++
     if (pc % 2 != 0) {
-        if (co % 2 == 0) {
+        if (co % 2 == 0 && fs==0 && ths==0) {
             var result = data.filter(obj => obj.primemember == 1);
             removeadds(result)
         }
-        else {
+        else if (co % 2 == 1 && fs==0 && ths==0) {
             var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
+            removeadds(result)
+        }
+        else if (co % 2 == 0 && fs==1 && ths==0) {
+            var result = data.filter(obj => obj.primemember == 1 && obj.star >= 4);
+            removeadds(result)
+        }
+        else if(co % 2 == 1 && fs==1 && ths==0){
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery" && obj.star >= 4);
+            removeadds(result)
+
+        }
+        else if (co % 2 == 0 && ths==0 && fs==0) {
+            var result = data.filter(obj => obj.primemember == 1);
+            removeadds(result)
+        }
+        else if (co % 2 == 1 && ths==0 && fs==0) {
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery");
+            removeadds(result)
+        }
+        else if (co % 2 == 0 && ths==1 && fs==0) {
+            var result = data.filter(obj => obj.primemember == 1 && obj.star >= 3);
+            removeadds(result)
+        }
+        else if(co % 2 == 1 && ths==1 && fs==0){
+            var result = data.filter(obj => obj.primemember == 1 && obj.delivery == "payondelivery" && obj.star >= 3);
             removeadds(result)
 
         }
 
     }
     else {
-        removeadds(data)
+         if (co % 2 == 0 && fs==0 && ths==0) {
+            removeadds(data)
+        
+         }
+        else if (co % 2 == 1 && fs==0 && ths==0) {
+             var result = data.filter(obj => obj.delivery == "payondelivery");
+             removeadds(result)
+        }
+         else if (co % 2 == 0 && fs==1 && ths==0) {
+            var result = data.filter(obj => obj.star >= 4);
+            removeadds(result)
+        }
+        else if(co % 2 == 1 && fs==1 && ths==0) {
+            var result = data.filter(obj => obj.delivery == "payondelivery" && obj.star >= 4);
+            removeadds(result)
+
+        }
+        else if (co % 2 == 0 && ths==0 && fs==0) {
+            removeadds(data)
+        }
+        else if (co % 2 == 1 && ths==0 && fs==0) {
+            var result = data.filter(obj =>obj.delivery == "payondelivery");
+            removeadds(result)
+        }
+        else if (co % 2 == 0 && ths==1 && fs==0) {
+            var result = data.filter(obj =>obj.star >= 3);
+            removeadds(result)
+        }
+        else if(co % 2 == 1 && ths==1 && fs==0){
+            var result = data.filter(obj =>obj.delivery == "payondelivery" && obj.star >= 3);
+            removeadds(result)
+
+        }
+        
+        
     }
 
 }
@@ -750,3 +946,5 @@ function removeadds(y) {
     d[0].remove()
     firstadd(y)
 }
+
+
