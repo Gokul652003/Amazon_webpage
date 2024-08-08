@@ -746,7 +746,7 @@
 
 }
 
-.hea span {
+.hea span.orange {
     color: rgb(196, 85, 0);
     font-weight: 600;
 }
@@ -862,6 +862,22 @@
     font-size: 12px;
     font-family: "Amazon Ember", Arial, sans-serif;
     margin-top: 5px;
+}
+.pagination ul{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 4%;
+    /* border: 1px solid black; */
+    /* width: 30%; */
+}
+.pagination li{
+    font-size: 16px;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #413e3ebd;
+    color: white;
 }
 @media screen and (max-width: 2807px) {
     .card {
